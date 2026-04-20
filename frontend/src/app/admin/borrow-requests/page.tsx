@@ -70,7 +70,7 @@ export default async function AdminBorrowRequestsPage() {
                     </td>
                     <td>
                       <form action={updateBorrowStatusAction.bind(null, row.id)} className="space-y-2">
-                        <select name="status" defaultValue={row.status} className="select">
+                        <select name="status" title="Status peminjaman" defaultValue={row.status} className="select">
                           {borrowStatuses.map((status) => (
                             <option key={status} value={status}>
                               {status}
@@ -79,6 +79,7 @@ export default async function AdminBorrowRequestsPage() {
                         </select>
                         <textarea
                           name="adminNote"
+                          title="Catatan admin"
                           className="textarea"
                           defaultValue={row.adminNote}
                           placeholder="Catatan keputusan admin"

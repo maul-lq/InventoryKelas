@@ -59,27 +59,27 @@ export default async function BorrowItemPage({ params, searchParams }: BorrowPag
         <form action={submitBorrowAction.bind(null, item.id)} className="grid gap-3 md:grid-cols-2">
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Jumlah</label>
-            <input type="number" min={1} max={item.availableQuantity} name="quantity" className="input" required />
+            <input type="number" min={1} max={item.availableQuantity} name="quantity" title="Jumlah pinjam" className="input" required />
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Tujuan</label>
-            <input name="purpose" className="input" placeholder="Contoh: praktikum basis data" required />
+            <input name="purpose" title="Tujuan peminjaman" className="input" placeholder="Contoh: praktikum basis data" required />
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Tanggal Pinjam</label>
-            <input type="date" name="borrowDate" className="input" required />
+            <input type="date" name="borrowDate" title="Tanggal pinjam" className="input" required />
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Rencana Kembali</label>
-            <input type="date" name="expectedReturnDate" className="input" required />
+            <input type="date" name="expectedReturnDate" title="Tanggal rencana kembali" className="input" required />
           </div>
 
           <div className="md:col-span-2">
             <label className="mb-1 block text-sm font-semibold text-slate-700">Catatan Tambahan</label>
-            <textarea name="userNote" className="textarea" rows={3} />
+            <textarea name="userNote" title="Catatan tambahan" className="textarea" rows={3} />
           </div>
 
           <div className="md:col-span-2 flex gap-2">

@@ -52,6 +52,7 @@ export function LoginForm() {
           <label className="mb-1 block text-sm font-semibold text-slate-700">Email</label>
           <input
             type="email"
+            title="Email"
             className="input"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
@@ -63,6 +64,7 @@ export function LoginForm() {
           <label className="mb-1 block text-sm font-semibold text-slate-700">Password</label>
           <input
             type="password"
+            title="Password"
             className="input"
             value={password}
             onChange={(event) => setPassword(event.target.value)}

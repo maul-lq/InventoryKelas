@@ -46,9 +46,9 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
     <AppShell user={user} title="Daftar Inventaris" subtitle="Lihat, filter, dan buka detail seluruh item inventaris kelas.">
       <section className="card mb-6 p-4">
         <form className="grid gap-3 md:grid-cols-5">
-          <input name="q" defaultValue={filters.q ?? ""} placeholder="Cari nama, kode, deskripsi" className="input md:col-span-2" />
+          <input title="Kata kunci" name="q" defaultValue={filters.q ?? ""} placeholder="Cari nama, kode, deskripsi" className="input md:col-span-2" />
 
-          <select name="categoryId" defaultValue={filters.categoryId ?? ""} className="select">
+          <select title="Filter kategori" name="categoryId" defaultValue={filters.categoryId ?? ""} className="select">
             <option value="">Semua kategori</option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
@@ -57,7 +57,7 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
             ))}
           </select>
 
-          <select name="locationId" defaultValue={filters.locationId ?? ""} className="select">
+          <select title="Filter lokasi" name="locationId" defaultValue={filters.locationId ?? ""} className="select">
             <option value="">Semua lokasi</option>
             {locations.map((location) => (
               <option key={location.id} value={location.id}>
@@ -67,7 +67,7 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
           </select>
 
           <div className="flex gap-2">
-            <select name="status" defaultValue={filters.status ?? ""} className="select">
+            <select title="Filter status" name="status" defaultValue={filters.status ?? ""} className="select">
               <option value="">Semua status</option>
               <option value="tersedia">Tersedia</option>
               <option value="dipinjam">Dipinjam</option>

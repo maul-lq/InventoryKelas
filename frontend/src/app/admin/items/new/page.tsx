@@ -41,16 +41,16 @@ export default async function NewItemPage() {
         <form action={createItemAction} className="grid gap-3 md:grid-cols-2">
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Kode Barang</label>
-            <input name="itemCode" className="input" required />
+            <input name="itemCode" title="Kode barang" className="input" required />
           </div>
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Nama Barang</label>
-            <input name="name" className="input" required />
+            <input name="name" title="Nama barang" className="input" required />
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Kategori</label>
-            <select name="categoryId" className="select" required>
+            <select name="categoryId" title="Kategori" className="select" required>
               <option value="">Pilih kategori</option>
               {categories.map((category) => (
                 <option key={category.id} value={category.id}>
@@ -62,7 +62,7 @@ export default async function NewItemPage() {
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Lokasi</label>
-            <select name="locationId" className="select" required>
+            <select name="locationId" title="Lokasi" className="select" required>
               <option value="">Pilih lokasi</option>
               {locations.map((location) => (
                 <option key={location.id} value={location.id}>
@@ -74,22 +74,22 @@ export default async function NewItemPage() {
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Total Quantity</label>
-            <input type="number" min={0} name="totalQuantity" className="input" required />
+            <input type="number" min={0} name="totalQuantity" title="Total quantity" className="input" required />
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Available Quantity</label>
-            <input type="number" min={0} name="availableQuantity" className="input" required />
+            <input type="number" min={0} name="availableQuantity" title="Available quantity" className="input" required />
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Satuan</label>
-            <input name="unit" className="input" defaultValue="unit" required />
+            <input name="unit" title="Satuan" className="input" defaultValue="unit" required />
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Kondisi</label>
-            <select name="condition" className="select" defaultValue="baik">
+            <select name="condition" title="Kondisi" className="select" defaultValue="baik">
               {itemConditions.map((condition) => (
                 <option key={condition} value={condition}>
                   {condition}
@@ -100,7 +100,7 @@ export default async function NewItemPage() {
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Status</label>
-            <select name="status" className="select" defaultValue="tersedia">
+            <select name="status" title="Status" className="select" defaultValue="tersedia">
               {itemStatuses.map((status) => (
                 <option key={status} value={status}>
                   {status}
@@ -111,7 +111,7 @@ export default async function NewItemPage() {
 
           <div className="md:col-span-2">
             <label className="mb-1 block text-sm font-semibold text-slate-700">Deskripsi</label>
-            <textarea name="description" className="textarea" rows={4} />
+            <textarea name="description" title="Deskripsi" className="textarea" rows={4} />
           </div>
 
           <div className="md:col-span-2 flex gap-2">

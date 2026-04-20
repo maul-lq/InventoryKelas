@@ -70,7 +70,7 @@ export default async function AdminDamageReportsPage() {
                     </td>
                     <td>
                       <form action={updateDamageStatusAction.bind(null, row.id)} className="space-y-2">
-                        <select name="status" defaultValue={row.status} className="select">
+                        <select name="status" title="Status laporan" defaultValue={row.status} className="select">
                           {damageStatuses.map((status) => (
                             <option key={status} value={status}>
                               {status}
@@ -78,7 +78,7 @@ export default async function AdminDamageReportsPage() {
                           ))}
                         </select>
 
-                        <select name="itemCondition" defaultValue={item?.condition ?? "baik"} className="select">
+                        <select name="itemCondition" title="Kondisi item" defaultValue={item?.condition ?? "baik"} className="select">
                           {itemConditions.map((condition) => (
                             <option key={condition} value={condition}>
                               {condition}
@@ -86,7 +86,7 @@ export default async function AdminDamageReportsPage() {
                           ))}
                         </select>
 
-                        <select name="itemStatus" defaultValue={item?.status ?? "tersedia"} className="select">
+                        <select name="itemStatus" title="Status item" defaultValue={item?.status ?? "tersedia"} className="select">
                           {itemStatuses.map((status) => (
                             <option key={status} value={status}>
                               {status}
@@ -96,6 +96,7 @@ export default async function AdminDamageReportsPage() {
 
                         <textarea
                           name="followUpNote"
+                          title="Catatan tindak lanjut"
                           className="textarea"
                           defaultValue={row.followUpNote}
                           placeholder="Catatan tindak lanjut"

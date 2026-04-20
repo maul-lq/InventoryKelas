@@ -45,8 +45,8 @@ export default async function AdminLocationsPage() {
       <section className="card mb-6 p-4">
         <h2 className="mb-3 text-lg font-bold text-slate-900">Tambah Lokasi</h2>
         <form action={createLocationAction} className="grid gap-3 md:grid-cols-3">
-          <input name="name" className="input" placeholder="Nama lokasi" required />
-          <input name="description" className="input" placeholder="Deskripsi lokasi" />
+          <input name="name" title="Nama lokasi" className="input" placeholder="Nama lokasi" required />
+          <input name="description" title="Deskripsi lokasi" className="input" placeholder="Deskripsi lokasi" />
           <button type="submit" className="btn btn-primary">
             Simpan
           </button>
@@ -58,8 +58,8 @@ export default async function AdminLocationsPage() {
           {locations.map((location) => (
             <div key={location.id} className="rounded-xl border border-slate-200 p-3">
               <form action={updateLocationAction.bind(null, location.id)} className="grid gap-3 md:grid-cols-3">
-                <input name="name" className="input" defaultValue={location.name} required />
-                <input name="description" className="input" defaultValue={location.description} />
+                <input name="name" title="Nama lokasi" className="input" defaultValue={location.name} required />
+                <input name="description" title="Deskripsi lokasi" className="input" defaultValue={location.description} />
                 <div className="flex gap-2">
                   <button type="submit" className="btn btn-muted">
                     Update

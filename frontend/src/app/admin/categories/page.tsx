@@ -45,8 +45,8 @@ export default async function AdminCategoriesPage() {
       <section className="card mb-6 p-4">
         <h2 className="mb-3 text-lg font-bold text-slate-900">Tambah Kategori</h2>
         <form action={createCategoryAction} className="grid gap-3 md:grid-cols-3">
-          <input name="name" className="input" placeholder="Nama kategori" required />
-          <input name="description" className="input" placeholder="Deskripsi kategori" />
+          <input name="name" title="Nama kategori" className="input" placeholder="Nama kategori" required />
+          <input name="description" title="Deskripsi kategori" className="input" placeholder="Deskripsi kategori" />
           <button type="submit" className="btn btn-primary">
             Simpan
           </button>
@@ -58,8 +58,8 @@ export default async function AdminCategoriesPage() {
           {categories.map((category) => (
             <div key={category.id} className="rounded-xl border border-slate-200 p-3">
               <form action={updateCategoryAction.bind(null, category.id)} className="grid gap-3 md:grid-cols-3">
-                <input name="name" className="input" defaultValue={category.name} required />
-                <input name="description" className="input" defaultValue={category.description} />
+                <input name="name" title="Nama kategori" className="input" defaultValue={category.name} required />
+                <input name="description" title="Deskripsi kategori" className="input" defaultValue={category.description} />
                 <div className="flex gap-2">
                   <button type="submit" className="btn btn-muted">
                     Update

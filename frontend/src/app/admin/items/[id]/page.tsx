@@ -58,16 +58,16 @@ export default async function EditItemPage({ params }: EditItemPageProps) {
         <form action={updateItemAction.bind(null, item.id)} className="grid gap-3 md:grid-cols-2">
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Kode Barang</label>
-            <input name="itemCode" className="input" defaultValue={item.itemCode} required />
+            <input name="itemCode" title="Kode barang" className="input" defaultValue={item.itemCode} required />
           </div>
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Nama Barang</label>
-            <input name="name" className="input" defaultValue={item.name} required />
+            <input name="name" title="Nama barang" className="input" defaultValue={item.name} required />
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Kategori</label>
-            <select name="categoryId" className="select" defaultValue={item.categoryId} required>
+            <select name="categoryId" title="Kategori" className="select" defaultValue={item.categoryId} required>
               {categories.map((category) => (
                 <option key={category.id} value={category.id}>
                   {category.name}
@@ -78,7 +78,7 @@ export default async function EditItemPage({ params }: EditItemPageProps) {
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Lokasi</label>
-            <select name="locationId" className="select" defaultValue={item.locationId} required>
+            <select name="locationId" title="Lokasi" className="select" defaultValue={item.locationId} required>
               {locations.map((location) => (
                 <option key={location.id} value={location.id}>
                   {location.name}
@@ -89,22 +89,22 @@ export default async function EditItemPage({ params }: EditItemPageProps) {
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Total Quantity</label>
-            <input type="number" min={0} name="totalQuantity" className="input" defaultValue={item.totalQuantity} required />
+            <input type="number" min={0} name="totalQuantity" title="Total quantity" className="input" defaultValue={item.totalQuantity} required />
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Available Quantity</label>
-            <input type="number" min={0} name="availableQuantity" className="input" defaultValue={item.availableQuantity} required />
+            <input type="number" min={0} name="availableQuantity" title="Available quantity" className="input" defaultValue={item.availableQuantity} required />
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Satuan</label>
-            <input name="unit" className="input" defaultValue={item.unit} required />
+            <input name="unit" title="Satuan" className="input" defaultValue={item.unit} required />
           </div>
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Kondisi</label>
-            <select name="condition" className="select" defaultValue={item.condition}>
+            <select name="condition" title="Kondisi" className="select" defaultValue={item.condition}>
               {itemConditions.map((condition) => (
                 <option key={condition} value={condition}>
                   {condition}
@@ -115,7 +115,7 @@ export default async function EditItemPage({ params }: EditItemPageProps) {
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Status</label>
-            <select name="status" className="select" defaultValue={item.status}>
+            <select name="status" title="Status" className="select" defaultValue={item.status}>
               {itemStatuses.map((status) => (
                 <option key={status} value={status}>
                   {status}
@@ -126,7 +126,7 @@ export default async function EditItemPage({ params }: EditItemPageProps) {
 
           <div className="md:col-span-2">
             <label className="mb-1 block text-sm font-semibold text-slate-700">Deskripsi</label>
-            <textarea name="description" className="textarea" rows={4} defaultValue={item.description} />
+            <textarea name="description" title="Deskripsi" className="textarea" rows={4} defaultValue={item.description} />
           </div>
 
           <div className="md:col-span-2 flex gap-2">

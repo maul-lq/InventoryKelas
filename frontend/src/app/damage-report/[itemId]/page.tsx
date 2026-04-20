@@ -50,7 +50,7 @@ export default async function DamageReportPage({ params, searchParams }: DamageR
         <form action={submitDamageAction.bind(null, item.id)} className="grid gap-3">
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Jenis Masalah</label>
-            <select name="issueType" className="select" required>
+            <select name="issueType" title="Jenis masalah" className="select" required>
               <option value="">Pilih jenis masalah</option>
               <option value="rusak-ringan">Rusak ringan</option>
               <option value="rusak-berat">Rusak berat</option>
@@ -61,7 +61,7 @@ export default async function DamageReportPage({ params, searchParams }: DamageR
 
           <div>
             <label className="mb-1 block text-sm font-semibold text-slate-700">Deskripsi</label>
-            <textarea name="description" className="textarea" rows={4} required />
+            <textarea name="description" title="Deskripsi masalah" className="textarea" rows={4} required />
           </div>
 
           <div className="flex gap-2">
