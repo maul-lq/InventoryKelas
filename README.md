@@ -1,118 +1,129 @@
-# Stellar Notes DApp
+# Inventra PNJ
 
-**Stellar Notes DApp** - Blockchain-Based Decentralized Note-Taking System
+**Inventra PNJ** - Aplikasi Web Inventory Kelas untuk Politeknik Negeri Jakarta
 
 ## Project Description
 
-Stellar Notes DApp is a decentralized smart contract solution built on the Stellar blockchain using Soroban SDK. It provides a secure, immutable platform for managing personal notes directly on the blockchain. The contract ensures that your data is stored transparently and is only manageable through predefined smart contract functions, eliminating reliance on centralized database providers.
+Inventra PNJ adalah aplikasi web inventory kelas yang dirancang untuk membantu Politeknik Negeri Jakarta mengelola barang inventaris secara terpusat, rapi, dan mudah dipantau. Aplikasi ini berfokus pada kebutuhan operasional kelas dan ruang belajar, mulai dari peralatan presentasi, furniture, hingga barang habis pakai yang digunakan dalam kegiatan akademik sehari-hari.
 
-The system allows users to create, view, and delete notes, leveraging the efficiency and security of the Stellar network. Each note is uniquely identified and stored within the contract's instance storage, ensuring data persistence and reliability.
+Sistem ini memungkinkan admin untuk melakukan proses **CRUD (Create, Read, Update, Delete)** terhadap data inventaris, sekaligus memberi mahasiswa akses untuk melihat ketersediaan barang, mengajukan peminjaman, dan melaporkan kerusakan atau kehilangan barang. Dengan pendekatan ini, inventaris kelas tidak hanya tercatat, tetapi juga aktif dikelola melalui alur kerja yang relevan untuk lingkungan kampus.
 
 ## Project Vision
 
-Our vision is to revolutionize personal productivity in the digital age by:
+Visi proyek ini adalah membangun sistem inventory kelas yang modern, praktis, dan mudah digunakan oleh civitas akademika PNJ dengan tujuan:
 
-- **Decentralizing Data**: Moving note-taking from centralized servers to a global, distributed blockchain
-- **Ensuring Ownership**: Empowering users to have complete control and ownership over their digital thoughts and information
-- **Guaranteeing Immutability**: Providing a permanent, tamper-proof record of notes that cannot be altered or deleted by third parties
-- **Enhancing Privacy**: Leveraging blockchain security to protect personal information from unauthorized access
-- **Building Trustless Systems**: Creating a platform where data integrity is guaranteed by code, not by company promises
+- **Merapikan Pengelolaan Inventaris**: Menyatukan pencatatan barang kelas dalam satu sistem yang konsisten
+- **Meningkatkan Transparansi**: Memudahkan admin dan mahasiswa melihat status barang secara jelas
+- **Mempercepat Proses Peminjaman**: Menyediakan alur pengajuan dan persetujuan peminjaman yang terstruktur
+- **Mempermudah Pelaporan Masalah**: Memberi jalur cepat untuk melaporkan barang rusak atau hilang
+- **Mendukung Pengembangan Bertahap**: Menjadikan sistem ini fondasi untuk dashboard, laporan, dan otomasi inventaris di masa depan
 
-We envision a future where digital information is truly personal and sovereign, empowering individuals with complete autonomy over their digital assets.
+Kami membayangkan Inventra PNJ sebagai platform yang membantu pengelolaan aset kelas menjadi lebih tertib, efisien, dan siap dikembangkan sesuai kebutuhan kampus.
 
 ## Key Features
 
-### 1. **Simple Note Creation**
+### 1. **CRUD Data Inventaris**
 
-- Create notes with just one function call
-- Specify title and content for each note
-- Automated ID generation for unique identification
-- Persistent storage on the Stellar blockchain
+- Tambah data barang inventaris baru
+- Lihat daftar barang dan detail inventaris
+- Ubah informasi barang, lokasi, jumlah, dan kondisi
+- Hapus data inventaris yang sudah tidak valid atau tidak digunakan
 
-### 2. **Efficient Data Retrieval**
+### 2. **Klasifikasi Inventaris Campuran**
 
-- Fetch all stored notes in a single call
-- Structured data representation for easy frontend integration
-- Quick access to your entire note collection
-- Real-time synchronization with the blockchain state
+- Mendukung peralatan kelas dan laboratorium
+- Mendukung furniture dan aset ruangan
+- Mendukung barang habis pakai
+- Memungkinkan pengelompokan berdasarkan kategori, lokasi, dan status
 
-### 3. **Secure Deletion**
+### 3. **Pengajuan Peminjaman Barang**
 
-- Remove specific notes using their unique IDs
-- Permanent removal from the contract storage
-- Clean and efficient storage management
-- Immediate update of the note list after deletion
+- Mahasiswa dapat mengajukan peminjaman barang yang tersedia
+- Admin dapat meninjau permintaan peminjaman
+- Sistem mendukung status pengajuan seperti menunggu, disetujui, atau ditolak
+- Riwayat peminjaman dapat digunakan untuk pelacakan penggunaan barang
 
-### 4. **Transparency and Security**
+### 4. **Pelaporan Kerusakan**
 
-- View all note activities on the blockchain
-- Blockchain-based verification of all storage actions
-- Immutable records of note creation and deletion
-- Protected against unauthorized modifications
+- Mahasiswa dapat mengirim laporan ketika barang rusak, hilang, atau tidak layak pakai
+- Admin dapat menindaklanjuti laporan berdasarkan kondisi barang
+- Status barang dapat diperbarui menjadi rusak, dalam perbaikan, atau tidak tersedia
+- Membantu menjaga kualitas inventaris kelas secara berkelanjutan
 
-### 5. **Stellar Network Integration**
+### 5. **Dashboard Status Inventaris**
 
-- Leverages the high speed and low cost of Stellar
-- Built using the modern Soroban Smart Contract SDK
-- Scalable architecture for growing note collections
-- Interoperable with other Stellar-based services
+- Menampilkan ringkasan barang tersedia, dipinjam, rusak, dan habis
+- Membantu admin memantau kondisi inventaris secara cepat
+- Mempermudah pengambilan keputusan terkait pengadaan dan perawatan barang
+- Menjadi dasar untuk pengembangan laporan inventaris yang lebih lengkap
+
+## Application Scope
+
+- Target Pengguna: Mahasiswa dan Admin
+- Ruang Lingkup Inventaris: Peralatan kelas, furniture, dan barang habis pakai
+- Fokus MVP: CRUD inventaris, peminjaman dengan approval admin, dan pelaporan kerusakan
+  ![Inventra PNJ Concept](screenshot.png)
 
 ## Contract Details
 
-- Contract Address: CBLU4IUASQ4WUMOXBFLZRSBBLILGOH33GS4LUPKFBCCCMJCDQNMF7G2M
+- Contract Address: CDMLSEUCYEJAWU6P6FLEED2IEYQMZ7Z3MJOEU6GEJQ5VXUQIAG4VBOQI
   ![alt text](screenshot.png)
 
 ## Future Scope
 
 ### Short-Term Enhancements
 
-1. **Note Encryption**: Support for end-to-end encryption of note content for enhanced privacy
-2. **Category Management**: Add tags and categories to organize notes efficiently
-3. **Rich Text Support**: Extend support beyond plain text to include Markdown and formatted content
-4. **Search Functionality**: Implement advanced search filters for large note collections
+1. **Pencarian dan Filter Lanjutan**: Memudahkan pencarian barang berdasarkan nama, kategori, lokasi, dan status
+2. **Manajemen Lokasi Kelas**: Menambahkan pengelolaan ruang atau kelas sebagai unit inventaris
+3. **Riwayat Aktivitas Barang**: Mencatat perubahan data, peminjaman, dan laporan kerusakan
+4. **Notifikasi Status Pengajuan**: Memberi pembaruan kepada mahasiswa terkait hasil approval peminjaman
 
 ### Medium-Term Development
 
-5. **Collaborative Notes**: Implement multi-signature requirements for shared or collaborative note-taking
-   - Shared access for multiple addresses
-   - Permission-based editing and viewing
-   - Version history tracking
-6. **Notification System**: Off-chain bridge to alert users of new updates or shared notes
-7. **Asset Attachment**: Capability to attach digital assets or tokens to specific notes
-8. **Inter-Contract Integration**: Allow other smart contracts to interact with and store data in the notes contract
+5. **QR Code untuk Identifikasi Barang**: Mempermudah pengecekan barang melalui kode unik
+   - Label inventaris per item
+   - Proses pengecekan cepat oleh admin
+   - Validasi barang saat peminjaman atau pengembalian
+6. **Laporan Inventaris Berkala**: Rekap barang berdasarkan kondisi, lokasi, dan penggunaan
+7. **Manajemen Pengembalian Barang**: Alur pengembalian untuk barang yang dipinjam
+8. **Multi-Role Access**: Penambahan peran dosen atau wali kelas untuk monitoring inventaris
 
 ### Long-Term Vision
 
-9. **Cross-Chain Synchronization**: Extend note storage to multiple blockchain networks
-10. **Decentralized UI Hosting**: Host the frontend on IPFS or similar decentralized platforms
-11. **AI-Powered Summarization**: Optional integration with AI to help users summarize their notes
-12. **Privacy Layers**: Implement zero-knowledge proofs for completely private note content
-13. **DAO Governance**: Community-driven protocol improvements and feature prioritization
-14. **Identity Management**: Integration with decentralized identity (DID) systems for user management
+9. **Integrasi Pengadaan Barang**: Menghubungkan data inventaris dengan kebutuhan pengadaan
+10. **Analitik Pemakaian Inventaris**: Mengetahui barang yang paling sering digunakan atau paling sering rusak
+11. **Akses Mobile-Friendly**: Optimalisasi antarmuka untuk penggunaan di perangkat mobile
+12. **Integrasi SSO Kampus**: Sinkronisasi akun pengguna dengan sistem autentikasi kampus
+13. **Audit Trail Lengkap**: Riwayat perubahan data untuk kebutuhan monitoring dan evaluasi
+14. **Monitoring Antar Ruang/Kelas**: Pelacakan inventaris lintas beberapa ruang secara terpusat
 
-### Enterprise Features
+### Institutional Features
 
-15. **Corporate Documentation**: Adapt the system for secure corporate record-keeping
-16. **Immutable Logging**: Create time-locked logs for audit purposes
-17. **Automated Reporting**: Automatic note triggers for periodic reporting
-18. **Multi-Language Support**: Expand accessibility with internationalization
+15. **Standarisasi Inventaris Jurusan**: Penyelarasan kategori dan format data antar ruang kelas
+16. **Pelaporan Kondisi Aset**: Ringkasan kondisi aset untuk kebutuhan administrasi kampus
+17. **Dashboard Pengambilan Keputusan**: Dukungan data untuk perawatan, penggantian, dan distribusi barang
+18. **Dukungan Multi-Bahasa**: Perluasan aksesibilitas untuk penggunaan yang lebih luas
 
 ---
 
 ## Technical Requirements
 
-- Soroban SDK
-- Rust programming language
-- Stellar blockchain network
+- Backend service untuk pengelolaan data inventaris
+- Database untuk menyimpan data barang, peminjaman, dan laporan kerusakan
+- Frontend web application untuk mahasiswa dan admin
+- Sistem autentikasi dan otorisasi berbasis peran
 
 ## Getting Started
 
-Deploy the smart contract to Stellar's Soroban network and interact with it using the three main functions:
+Pengembangan awal aplikasi ini akan berpusat pada modul inti berikut:
 
-- `create_note()` - Create a new note with a title and content
-- `get_notes()` - Retrieve all stored notes from the contract
-- `delete_note()` - Remove a specific note by its ID
+- `create_item()` - Menambahkan barang inventaris baru
+- `get_items()` - Melihat daftar dan detail barang inventaris
+- `update_item()` - Memperbarui data barang, stok, lokasi, atau kondisi
+- `delete_item()` - Menghapus data barang inventaris
+- `create_borrow_request()` - Mengajukan peminjaman barang oleh mahasiswa
+- `create_damage_report()` - Membuat laporan kerusakan atau kehilangan barang
 
 ---
 
-**Stellar Notes DApp** - Securing Your Thoughts on the Blockchain
+**Inventra PNJ** - Membangun Pengelolaan Inventory Kelas yang Lebih Tertib dan Modern
