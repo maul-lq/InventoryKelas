@@ -1,11 +1,12 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { logoutCurrentSession, type PublicUser } from "@/lib/auth";
 
 interface AppShellProps {
   user: PublicUser;
   title: string;
   subtitle?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 async function logoutAction() {
@@ -39,7 +40,7 @@ export function AppShell({ user, title, subtitle, children }: AppShellProps) {
   const links = buildLinks(user.role);
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_#fff4da,_#f5f7fb_40%,_#eef1f8_100%)] text-slate-900">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,#fff4da,#f5f7fb_40%,#eef1f8_100%)] text-slate-900">
       <header className="border-b border-slate-200 bg-white/80 backdrop-blur">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:justify-between">
           <div>
