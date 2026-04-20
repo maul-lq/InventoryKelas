@@ -1,7 +1,7 @@
 {
   "meta": {
     "createdAt": "2026-04-20T05:06:39.044Z",
-    "updatedAt": "2026-04-20T05:14:34.898Z"
+    "updatedAt": "2026-04-20T05:24:08.885Z"
   },
   "users": [
     {
@@ -86,6 +86,20 @@
       "description": "",
       "createdAt": "2026-04-20T05:14:33.900Z",
       "updatedAt": "2026-04-20T05:14:33.900Z"
+    },
+    {
+      "id": "cat_b72d3e47-3741-48a5-8175-c47d160ad4f9",
+      "name": "Kategori CHAIN 1776662614679",
+      "description": "",
+      "createdAt": "2026-04-20T05:23:34.720Z",
+      "updatedAt": "2026-04-20T05:23:34.720Z"
+    },
+    {
+      "id": "cat_dd1e8fa4-44f2-4b3e-8665-f290f4e63f5a",
+      "name": "Kategori CHAIN OK 1776662639684",
+      "description": "",
+      "createdAt": "2026-04-20T05:23:59.714Z",
+      "updatedAt": "2026-04-20T05:23:59.714Z"
     }
   ],
   "locations": [
@@ -154,6 +168,24 @@
   "borrowRequests": [],
   "damageReports": [],
   "activityLogs": [
+    {
+      "id": "activity_0b6d5e45-a421-41f8-81cf-be5159f31cdc",
+      "actorUserId": "user_admin_seed",
+      "event": "category.create",
+      "entityType": "category",
+      "entityId": "cat_dd1e8fa4-44f2-4b3e-8665-f290f4e63f5a",
+      "message": "Kategori Kategori CHAIN OK 1776662639684 dibuat.",
+      "createdAt": "2026-04-20T05:23:59.714Z"
+    },
+    {
+      "id": "activity_c067a406-d2a3-46ee-82b0-840e0ea4dea2",
+      "actorUserId": "user_admin_seed",
+      "event": "category.create",
+      "entityType": "category",
+      "entityId": "cat_b72d3e47-3741-48a5-8175-c47d160ad4f9",
+      "message": "Kategori Kategori CHAIN 1776662614679 dibuat.",
+      "createdAt": "2026-04-20T05:23:34.720Z"
+    },
     {
       "id": "activity_b595a978-a223-4752-b776-81e0a5df5a00",
       "actorUserId": "user_admin_seed",

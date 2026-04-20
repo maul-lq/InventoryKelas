@@ -171,6 +171,7 @@ async function invokeContract(
     config.contractId,
     "--source-account",
     config.sourceAccount,
+    "--send=yes",
   ];
 
   if (config.network) {
