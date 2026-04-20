@@ -476,3 +476,298 @@ Jika PLAN.md ini dipakai sebagai dasar kerja, maka langkah implementasi berikutn
 - **dashboard status inventaris**
 
 Dokumen ini dimaksudkan sebagai acuan produk awal sebelum masuk ke perencanaan teknis yang lebih detail.
+
+---
+
+## 18. Rekomendasi Arsitektur Teknis Awal
+
+Untuk implementasi tahap awal, saya merekomendasikan arsitektur web app yang sederhana, cepat dikembangkan, dan mudah dirawat.
+
+### Rekomendasi stack
+
+#### Frontend
+- **Next.js**
+- **TypeScript**
+- **Tailwind CSS**
+
+#### Backend
+- **Next.js Route Handlers / API Routes** untuk tahap awal  
+  atau backend terpisah jika nanti kebutuhan tumbuh lebih besar
+
+#### Database
+- **PostgreSQL**
+
+#### ORM / Query Layer
+- **Prisma**
+
+#### Authentication
+- autentikasi berbasis session / token dengan role:
+  - `admin`
+  - `mahasiswa`
+
+### Alasan rekomendasi ini
+- cocok untuk membangun MVP dengan cepat
+- frontend dan backend bisa bergerak dalam satu codebase
+- TypeScript membantu konsistensi tipe data
+- PostgreSQL cocok untuk data relasional seperti item, kategori, peminjaman, dan laporan
+- Prisma mempermudah schema awal dan migrasi database
+
+---
+
+## 19. Struktur Modul Teknis yang Disarankan
+
+### 19.1 Modul Auth
+Tanggung jawab:
+- login
+- logout
+- cek session user
+- pembatasan akses berdasarkan role
+
+### 19.2 Modul Inventory
+Tanggung jawab:
+- CRUD item
+- filter dan pencarian item
+- update kondisi dan status barang
+
+### 19.3 Modul Category
+Tanggung jawab:
+- CRUD kategori
+- pengelompokan barang
+
+### 19.4 Modul Location
+Tanggung jawab:
+- CRUD lokasi / kelas / ruang
+- pengaitan item dengan ruangan
+
+### 19.5 Modul Borrowing
+Tanggung jawab:
+- membuat pengajuan peminjaman
+- approval / rejection
+- riwayat peminjaman
+- update status pengembalian
+
+### 19.6 Modul Damage Reporting
+Tanggung jawab:
+- membuat laporan kerusakan
+- update status tindak lanjut
+- sinkronisasi ke kondisi barang bila diperlukan
+
+### 19.7 Modul Dashboard
+Tanggung jawab:
+- agregasi statistik
+- ringkasan data utama untuk admin
+
+---
+
+## 20. Rancangan Tabel Database Awal
+
+Berikut rancangan tabel yang bisa dipakai sebagai basis schema awal:
+
+### `users`
+- id
+- name
+- email
+- password_hash
+- role
+- created_at
+- updated_at
+
+### `categories`
+- id
+- name
+- description
+- created_at
+- updated_at
+
+### `locations`
+- id
+- name
+- description
+- created_at
+- updated_at
+
+### `items`
+- id
+- item_code
+- name
+- category_id
+- location_id
+- quantity
+- unit
+- condition
+- status
+- description
+- created_at
+- updated_at
+
+### `borrow_requests`
+- id
+- item_id
+- user_id
+- quantity
+- purpose
+- borrow_date
+- expected_return_date
+- status
+- user_note
+- admin_note
+- approved_by
+- approved_at
+- returned_at
+- created_at
+- updated_at
+
+### `damage_reports`
+- id
+- item_id
+- user_id
+- issue_type
+- description
+- status
+- follow_up_note
+- handled_by
+- handled_at
+- created_at
+- updated_at
+
+### Relasi inti
+- satu `category` punya banyak `items`
+- satu `location` punya banyak `items`
+- satu `user` bisa punya banyak `borrow_requests`
+- satu `user` bisa punya banyak `damage_reports`
+- satu `item` bisa punya banyak `borrow_requests`
+- satu `item` bisa punya banyak `damage_reports`
+
+---
+
+## 21. Rekomendasi Routing Halaman
+
+### Public / shared
+- `/login`
+- `/inventory`
+- `/inventory/[id]`
+
+### Mahasiswa
+- `/my-borrow-requests`
+- `/borrow/[itemId]`
+- `/my-damage-reports`
+- `/damage-report/[itemId]`
+
+### Admin
+- `/admin/dashboard`
+- `/admin/items`
+- `/admin/items/new`
+- `/admin/items/[id]`
+- `/admin/categories`
+- `/admin/locations`
+- `/admin/borrow-requests`
+- `/admin/damage-reports`
+
+---
+
+## 22. Rekomendasi API Endpoint Awal
+
+### Auth
+- `POST /api/auth/login`
+- `POST /api/auth/logout`
+- `GET /api/auth/me`
+
+### Items
+- `GET /api/items`
+- `POST /api/items`
+- `GET /api/items/:id`
+- `PUT /api/items/:id`
+- `DELETE /api/items/:id`
+
+### Categories
+- `GET /api/categories`
+- `POST /api/categories`
+- `PUT /api/categories/:id`
+- `DELETE /api/categories/:id`
+
+### Locations
+- `GET /api/locations`
+- `POST /api/locations`
+- `PUT /api/locations/:id`
+- `DELETE /api/locations/:id`
+
+### Borrow Requests
+- `GET /api/borrow-requests`
+- `POST /api/borrow-requests`
+- `GET /api/borrow-requests/:id`
+- `PATCH /api/borrow-requests/:id/status`
+
+### Damage Reports
+- `GET /api/damage-reports`
+- `POST /api/damage-reports`
+- `GET /api/damage-reports/:id`
+- `PATCH /api/damage-reports/:id/status`
+
+### Dashboard
+- `GET /api/admin/dashboard-summary`
+
+---
+
+## 23. Prioritas Task Implementasi Teknis
+
+### Sprint 1 — Setup proyek
+- setup frontend web app
+- setup styling dasar
+- setup database
+- setup ORM
+- setup autentikasi dan role
+
+### Sprint 2 — Master data
+- CRUD kategori
+- CRUD lokasi
+- CRUD item
+- filter dan pencarian dasar
+
+### Sprint 3 — Workflow peminjaman
+- form pengajuan peminjaman
+- daftar pengajuan mahasiswa
+- daftar approval admin
+- update status approval
+
+### Sprint 4 — Workflow kerusakan
+- form laporan kerusakan
+- daftar laporan mahasiswa
+- manajemen laporan oleh admin
+- sinkronisasi kondisi barang
+
+### Sprint 5 — Dashboard dan finishing
+- dashboard ringkas admin
+- perapihan validasi
+- perapihan empty state dan error state
+- hardening authorization
+
+---
+
+## 24. Definition of Done (MVP)
+
+MVP dianggap selesai jika:
+
+- admin bisa login dan mengelola inventaris
+- mahasiswa bisa login dan melihat inventaris
+- item bisa dibuat, dilihat, diubah, dan dihapus
+- kategori dan lokasi bisa dikelola
+- mahasiswa bisa mengajukan peminjaman
+- admin bisa menyetujui atau menolak peminjaman
+- mahasiswa bisa membuat laporan kerusakan
+- admin bisa memproses laporan kerusakan
+- dashboard admin menampilkan ringkasan utama
+- role mahasiswa dan admin benar-benar dibatasi sesuai hak akses
+
+---
+
+## 25. Langkah Paling Logis Setelah PLAN.md
+
+Setelah dokumen ini, urutan kerja yang paling logis adalah:
+
+1. tetapkan stack final
+2. buat schema database awal
+3. scaffold project frontend + backend
+4. implementasikan modul master data
+5. lanjut ke workflow peminjaman
+6. lanjut ke laporan kerusakan
+7. tutup dengan dashboard dan hardening

@@ -66,7 +66,7 @@ Kami membayangkan Inventra PNJ sebagai platform yang membantu pengelolaan aset k
 
 ## Contract Details
 
-- Contract Address: CDMLSEUCYEJAWU6P6FLEED2IEYQMZ7Z3MJOEU6GEJQ5VXUQIAG4VBOQI
+- Contract Address: CAWOE7L6BBSGXTO76PXK3035SAYQJHD3X43HGIOCQVRCHQMI7NNYTOJS
   ![alt text](screenshot.png)
 
 ## Future Scope
