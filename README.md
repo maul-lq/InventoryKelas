@@ -1,129 +1,129 @@
 # Inventra PNJ
 
-**Inventra PNJ** - Aplikasi Web Inventory Kelas untuk Politeknik Negeri Jakarta
+**Inventra PNJ** - Classroom Inventory Web Application for Politeknik Negeri Jakarta
 
 ## Project Description
 
-Inventra PNJ adalah aplikasi web inventory kelas yang dirancang untuk membantu Politeknik Negeri Jakarta mengelola barang inventaris secara terpusat, rapi, dan mudah dipantau. Aplikasi ini berfokus pada kebutuhan operasional kelas dan ruang belajar, mulai dari peralatan presentasi, furniture, hingga barang habis pakai yang digunakan dalam kegiatan akademik sehari-hari.
+Inventra PNJ is a classroom inventory web application designed to help Politeknik Negeri Jakarta manage inventory items in a centralized, organized, and easy-to-monitor system. The application focuses on practical classroom and learning-space operations, covering presentation tools, furniture, and consumable items used in daily academic activities.
 
-Sistem ini memungkinkan admin untuk melakukan proses **CRUD (Create, Read, Update, Delete)** terhadap data inventaris, sekaligus memberi mahasiswa akses untuk melihat ketersediaan barang, mengajukan peminjaman, dan melaporkan kerusakan atau kehilangan barang. Dengan pendekatan ini, inventaris kelas tidak hanya tercatat, tetapi juga aktif dikelola melalui alur kerja yang relevan untuk lingkungan kampus.
+The system allows admins to perform **CRUD (Create, Read, Update, Delete)** operations on inventory data while giving students access to check item availability, submit borrowing requests, and report damaged or missing items. With this approach, classroom inventory is not only recorded but also actively managed through workflows that fit campus operations.
 
 ## Project Vision
 
-Visi proyek ini adalah membangun sistem inventory kelas yang modern, praktis, dan mudah digunakan oleh civitas akademika PNJ dengan tujuan:
+This project aims to build a modern, practical, and easy-to-use classroom inventory system for the PNJ academic community with the following goals:
 
-- **Merapikan Pengelolaan Inventaris**: Menyatukan pencatatan barang kelas dalam satu sistem yang konsisten
-- **Meningkatkan Transparansi**: Memudahkan admin dan mahasiswa melihat status barang secara jelas
-- **Mempercepat Proses Peminjaman**: Menyediakan alur pengajuan dan persetujuan peminjaman yang terstruktur
-- **Mempermudah Pelaporan Masalah**: Memberi jalur cepat untuk melaporkan barang rusak atau hilang
-- **Mendukung Pengembangan Bertahap**: Menjadikan sistem ini fondasi untuk dashboard, laporan, dan otomasi inventaris di masa depan
+- **Improve Inventory Management**: Consolidate classroom item records into one consistent system.
+- **Increase Transparency**: Make item status clearly visible to admins and students.
+- **Speed Up Borrowing Process**: Provide a structured borrowing request and approval workflow.
+- **Simplify Issue Reporting**: Provide a fast path to report damaged or missing items.
+- **Support Incremental Development**: Make this system a foundation for dashboards, reporting, and inventory automation in future phases.
 
-Kami membayangkan Inventra PNJ sebagai platform yang membantu pengelolaan aset kelas menjadi lebih tertib, efisien, dan siap dikembangkan sesuai kebutuhan kampus.
+We envision Inventra PNJ as a platform that makes classroom asset management more structured, efficient, and ready to evolve with campus needs.
 
 ## Key Features
 
 ### 1. **CRUD Data Inventaris**
 
-- Tambah data barang inventaris baru
-- Lihat daftar barang dan detail inventaris
-- Ubah informasi barang, lokasi, jumlah, dan kondisi
-- Hapus data inventaris yang sudah tidak valid atau tidak digunakan
+- Add new inventory item records.
+- View item lists and detailed inventory information.
+- Update item information, location, quantity, and condition.
+- Delete invalid or unused inventory records.
 
 ### 2. **Klasifikasi Inventaris Campuran**
 
-- Mendukung peralatan kelas dan laboratorium
-- Mendukung furniture dan aset ruangan
-- Mendukung barang habis pakai
-- Memungkinkan pengelompokan berdasarkan kategori, lokasi, dan status
+- Supports classroom and laboratory equipment.
+- Supports furniture and room assets.
+- Supports consumable items.
+- Allows grouping by category, location, and status.
 
 ### 3. **Pengajuan Peminjaman Barang**
 
-- Mahasiswa dapat mengajukan peminjaman barang yang tersedia
-- Admin dapat meninjau permintaan peminjaman
-- Sistem mendukung status pengajuan seperti menunggu, disetujui, atau ditolak
-- Riwayat peminjaman dapat digunakan untuk pelacakan penggunaan barang
+- Students can request available items for borrowing.
+- Admins can review borrowing requests.
+- The system supports request statuses such as pending, approved, or rejected.
+- Borrowing history can be used to track item usage.
 
 ### 4. **Pelaporan Kerusakan**
 
-- Mahasiswa dapat mengirim laporan ketika barang rusak, hilang, atau tidak layak pakai
-- Admin dapat menindaklanjuti laporan berdasarkan kondisi barang
-- Status barang dapat diperbarui menjadi rusak, dalam perbaikan, atau tidak tersedia
-- Membantu menjaga kualitas inventaris kelas secara berkelanjutan
+- Students can submit reports when items are damaged, missing, or unfit for use.
+- Admins can follow up reports based on item condition.
+- Item status can be updated to damaged, under repair, or unavailable.
+- Helps maintain classroom inventory quality over time.
 
 ### 5. **Dashboard Status Inventaris**
 
-- Menampilkan ringkasan barang tersedia, dipinjam, rusak, dan habis
-- Membantu admin memantau kondisi inventaris secara cepat
-- Mempermudah pengambilan keputusan terkait pengadaan dan perawatan barang
-- Menjadi dasar untuk pengembangan laporan inventaris yang lebih lengkap
+- Displays summaries of available, borrowed, damaged, and out-of-stock items.
+- Helps admins monitor inventory status quickly.
+- Supports decision-making for procurement and maintenance.
+- Serves as a foundation for more advanced inventory reporting.
 
 ## Application Scope
 
-- Target Pengguna: Mahasiswa dan Admin
-- Ruang Lingkup Inventaris: Peralatan kelas, furniture, dan barang habis pakai
-- Fokus MVP: CRUD inventaris, peminjaman dengan approval admin, dan pelaporan kerusakan
+- Target Users: Students and Admins.
+- Inventory Scope: Classroom equipment, furniture, and consumables.
+- MVP Focus: Inventory CRUD, borrowing with admin approval, and damage reporting.
   ![Inventra PNJ Concept](screenshot.png)
 
 ## Contract Details
 
-- Contract Address: CAWOE7L6BBSGXTO76PXK3035SAYQJHD3X43HGIOCQVRCHQMI7NNYTOJS
+- Contract Address: CAGT4WK5ORNRPGUE6GXJMS7OJFMGGQLUJBO3E7XBYRJCYEBSDZ24XLWY
   ![alt text](screenshot.png)
 
 ## Future Scope
 
 ### Short-Term Enhancements
 
-1. **Pencarian dan Filter Lanjutan**: Memudahkan pencarian barang berdasarkan nama, kategori, lokasi, dan status
-2. **Manajemen Lokasi Kelas**: Menambahkan pengelolaan ruang atau kelas sebagai unit inventaris
-3. **Riwayat Aktivitas Barang**: Mencatat perubahan data, peminjaman, dan laporan kerusakan
-4. **Notifikasi Status Pengajuan**: Memberi pembaruan kepada mahasiswa terkait hasil approval peminjaman
+1. **Advanced Search and Filters**: Improve item lookup by name, category, location, and status.
+2. **Classroom Location Management**: Add room/class management as inventory units.
+3. **Item Activity History**: Track data changes, borrowing activity, and damage reports.
+4. **Request Status Notifications**: Notify students about borrowing approval outcomes.
 
 ### Medium-Term Development
 
-5. **QR Code untuk Identifikasi Barang**: Mempermudah pengecekan barang melalui kode unik
-   - Label inventaris per item
-   - Proses pengecekan cepat oleh admin
-   - Validasi barang saat peminjaman atau pengembalian
-6. **Laporan Inventaris Berkala**: Rekap barang berdasarkan kondisi, lokasi, dan penggunaan
-7. **Manajemen Pengembalian Barang**: Alur pengembalian untuk barang yang dipinjam
-8. **Multi-Role Access**: Penambahan peran dosen atau wali kelas untuk monitoring inventaris
+1. **QR Codes for Item Identification**: Simplify item checks with unique codes.
+   - Per-item inventory labels.
+   - Faster checking process for admins.
+   - Item validation during borrowing and return.
+2. **Periodic Inventory Reports**: Summaries based on condition, location, and usage.
+3. **Return Management Workflow**: Structured return process for borrowed items.
+4. **Multi-Role Access**: Additional roles such as lecturers or homeroom teachers for monitoring.
 
 ### Long-Term Vision
 
-9. **Integrasi Pengadaan Barang**: Menghubungkan data inventaris dengan kebutuhan pengadaan
-10. **Analitik Pemakaian Inventaris**: Mengetahui barang yang paling sering digunakan atau paling sering rusak
-11. **Akses Mobile-Friendly**: Optimalisasi antarmuka untuk penggunaan di perangkat mobile
-12. **Integrasi SSO Kampus**: Sinkronisasi akun pengguna dengan sistem autentikasi kampus
-13. **Audit Trail Lengkap**: Riwayat perubahan data untuk kebutuhan monitoring dan evaluasi
-14. **Monitoring Antar Ruang/Kelas**: Pelacakan inventaris lintas beberapa ruang secara terpusat
+1. **Procurement Integration**: Connect inventory data to procurement planning.
+2. **Inventory Usage Analytics**: Identify most-used and most-damaged items.
+3. **Mobile-Friendly Access**: Optimize UI for mobile devices.
+4. **Campus SSO Integration**: Synchronize user accounts with campus authentication systems.
+5. **Comprehensive Audit Trail**: Full change history for monitoring and evaluation.
+6. **Cross-Room/Class Monitoring**: Track inventory across multiple rooms centrally.
 
 ### Institutional Features
 
-15. **Standarisasi Inventaris Jurusan**: Penyelarasan kategori dan format data antar ruang kelas
-16. **Pelaporan Kondisi Aset**: Ringkasan kondisi aset untuk kebutuhan administrasi kampus
-17. **Dashboard Pengambilan Keputusan**: Dukungan data untuk perawatan, penggantian, dan distribusi barang
-18. **Dukungan Multi-Bahasa**: Perluasan aksesibilitas untuk penggunaan yang lebih luas
+1. **Department Inventory Standardization**: Align categories and data formats across classrooms.
+2. **Asset Condition Reporting**: Condition summaries for campus administrative needs.
+3. **Decision-Making Dashboard**: Data support for maintenance, replacement, and distribution.
+4. **Multi-Language Support**: Broaden accessibility for wider adoption.
 
 ---
 
 ## Technical Requirements
 
-- Backend service untuk pengelolaan data inventaris
-- Database untuk menyimpan data barang, peminjaman, dan laporan kerusakan
-- Frontend web application untuk mahasiswa dan admin
-- Sistem autentikasi dan otorisasi berbasis peran
+- Backend service for inventory data management.
+- Database for item, borrowing, and damage report records.
+- Frontend web application for students and admins.
+- Role-based authentication and authorization system.
 
 ## Getting Started
 
-Pengembangan awal aplikasi ini akan berpusat pada modul inti berikut:
+Initial development focuses on the following core modules:
 
-- `create_item()` - Menambahkan barang inventaris baru
-- `get_items()` - Melihat daftar dan detail barang inventaris
-- `update_item()` - Memperbarui data barang, stok, lokasi, atau kondisi
-- `delete_item()` - Menghapus data barang inventaris
-- `create_borrow_request()` - Mengajukan peminjaman barang oleh mahasiswa
-- `create_damage_report()` - Membuat laporan kerusakan atau kehilangan barang
+- `create_item()` - Add a new inventory item.
+- `get_items()` - View inventory item lists and details.
+- `update_item()` - Update item data, stock, location, or condition.
+- `delete_item()` - Delete inventory item data.
+- `create_borrow_request()` - Submit item borrowing requests by students.
+- `create_damage_report()` - Create reports for damaged or missing items.
 
 ---
 
-**Inventra PNJ** - Membangun Pengelolaan Inventory Kelas yang Lebih Tertib dan Modern
+**Inventra PNJ** - Building a More Organized and Modern Classroom Inventory Management System
