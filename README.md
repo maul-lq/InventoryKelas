@@ -62,7 +62,6 @@ We envision Inventra PNJ as a platform that makes classroom asset management mor
 - Target Users: Students and Admins.
 - Inventory Scope: Classroom equipment, furniture, and consumables.
 - MVP Focus: Inventory CRUD, borrowing with admin approval, and damage reporting.
-  ![Inventra PNJ Concept](screenshot.png)
 
 ## Contract Details
 
