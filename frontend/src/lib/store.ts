@@ -17,6 +17,22 @@ import {
   type SessionRecord,
   type User,
 } from "@/lib/types";
+import {
+  isSorobanSyncEnabled,
+  syncBorrowCreate,
+  syncBorrowStatusUpdate,
+  syncCategoryCreate,
+  syncCategoryDelete,
+  syncCategoryUpdate,
+  syncDamageCreate,
+  syncDamageStatusUpdate,
+  syncItemCreate,
+  syncItemDelete,
+  syncItemUpdate,
+  syncLocationCreate,
+  syncLocationDelete,
+  syncLocationUpdate,
+} from "@/lib/soroban-sync";
 
 const DB_FILE_PATH = path.join(process.cwd(), "data", "inventra-db.json");
 
@@ -45,6 +61,19 @@ function normalizeItemStatus(item: Pick<Item, "condition" | "availableQuantity" 
     return "tidak-tersedia";
   }
   return "tersedia";
+}
+
+async function runSorobanSync(label: string, callback: () => Promise<void>): Promise<void> {
+  if (!isSorobanSyncEnabled()) {
+    return;
+  }
+
+  try {
+    await callback();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(`[soroban-sync:${label}] ${message}`);
+  }
 }
 
 function buildSeedDatabase(): DatabaseShape {
@@ -368,7 +397,7 @@ export async function createCategory(input: {
   name: string;
   description: string;
 }): Promise<Category> {
-  return withMutation((db) => {
+  return withMutation(async (db) => {
     const name = input.name.trim();
     if (!name) {
       throw new Error("Nama kategori wajib diisi.");
@@ -390,6 +419,11 @@ export async function createCategory(input: {
 
     db.categories.push(category);
     addActivity(db, input.actorUserId, "category.create", "category", category.id, `Kategori ${name} dibuat.`);
+
+    await runSorobanSync("category.create", async () => {
+      await syncCategoryCreate(category);
+    });
+
     return category;
   });
 }
@@ -402,7 +436,7 @@ export async function updateCategory(
     description: string;
   },
 ): Promise<Category> {
-  return withMutation((db) => {
+  return withMutation(async (db) => {
     const category = findCategory(db, categoryId);
     const nextName = input.name.trim();
 
@@ -422,17 +456,26 @@ export async function updateCategory(
     category.updatedAt = nowIso();
 
     addActivity(db, input.actorUserId, "category.update", "category", category.id, `Kategori ${nextName} diperbarui.`);
+
+    await runSorobanSync("category.update", async () => {
+      await syncCategoryUpdate(category);
+    });
+
     return category;
   });
 }
 
 export async function deleteCategory(categoryId: string, actorUserId: string): Promise<void> {
-  await withMutation((db) => {
+  await withMutation(async (db) => {
     findCategory(db, categoryId);
     const hasItem = db.items.some((item) => item.categoryId === categoryId);
     if (hasItem) {
       throw new Error("Kategori masih dipakai oleh item inventaris.");
     }
+
+    await runSorobanSync("category.delete", async () => {
+      await syncCategoryDelete(categoryId);
+    });
 
     db.categories = db.categories.filter((entry) => entry.id !== categoryId);
     addActivity(db, actorUserId, "category.delete", "category", categoryId, "Kategori dihapus.");
@@ -449,7 +492,7 @@ export async function createLocation(input: {
   name: string;
   description: string;
 }): Promise<Location> {
-  return withMutation((db) => {
+  return withMutation(async (db) => {
     const name = input.name.trim();
     if (!name) {
       throw new Error("Nama lokasi wajib diisi.");
@@ -471,6 +514,11 @@ export async function createLocation(input: {
 
     db.locations.push(location);
     addActivity(db, input.actorUserId, "location.create", "location", location.id, `Lokasi ${name} dibuat.`);
+
+    await runSorobanSync("location.create", async () => {
+      await syncLocationCreate(location);
+    });
+
     return location;
   });
 }
@@ -483,7 +531,7 @@ export async function updateLocation(
     description: string;
   },
 ): Promise<Location> {
-  return withMutation((db) => {
+  return withMutation(async (db) => {
     const location = findLocation(db, locationId);
     const nextName = input.name.trim();
     if (!nextName) {
@@ -502,17 +550,26 @@ export async function updateLocation(
     location.updatedAt = nowIso();
 
     addActivity(db, input.actorUserId, "location.update", "location", location.id, `Lokasi ${nextName} diperbarui.`);
+
+    await runSorobanSync("location.update", async () => {
+      await syncLocationUpdate(location);
+    });
+
     return location;
   });
 }
 
 export async function deleteLocation(locationId: string, actorUserId: string): Promise<void> {
-  await withMutation((db) => {
+  await withMutation(async (db) => {
     findLocation(db, locationId);
     const hasItem = db.items.some((item) => item.locationId === locationId);
     if (hasItem) {
       throw new Error("Lokasi masih dipakai oleh item inventaris.");
     }
+
+    await runSorobanSync("location.delete", async () => {
+      await syncLocationDelete(locationId);
+    });
 
     db.locations = db.locations.filter((entry) => entry.id !== locationId);
     addActivity(db, actorUserId, "location.delete", "location", locationId, "Lokasi dihapus.");
@@ -578,7 +635,7 @@ export async function createItem(input: {
   status: ItemStatus;
   description: string;
 }): Promise<Item> {
-  return withMutation((db) => {
+  return withMutation(async (db) => {
     const itemCode = input.itemCode.trim();
     const name = input.name.trim();
     const unit = input.unit.trim();
@@ -598,8 +655,8 @@ export async function createItem(input: {
       throw new Error("Kode barang sudah dipakai.");
     }
 
-    findCategory(db, input.categoryId);
-    findLocation(db, input.locationId);
+    const category = findCategory(db, input.categoryId);
+    const location = findLocation(db, input.locationId);
 
     const totalQuantity = parseNonNegativeInt(input.totalQuantity, "Total quantity");
     const availableQuantity = parseNonNegativeInt(input.availableQuantity, "Available quantity");
@@ -631,6 +688,11 @@ export async function createItem(input: {
 
     db.items.push(item);
     addActivity(db, input.actorUserId, "item.create", "item", item.id, `Item ${item.name} dibuat.`);
+
+    await runSorobanSync("item.create", async () => {
+      await syncItemCreate(item, category, location);
+    });
+
     return item;
   });
 }
@@ -651,7 +713,7 @@ export async function updateItem(
     description: string;
   },
 ): Promise<Item> {
-  return withMutation((db) => {
+  return withMutation(async (db) => {
     const item = findItem(db, itemId);
 
     const itemCode = input.itemCode.trim();
@@ -675,8 +737,8 @@ export async function updateItem(
       throw new Error("Kode barang sudah dipakai.");
     }
 
-    findCategory(db, input.categoryId);
-    findLocation(db, input.locationId);
+    const category = findCategory(db, input.categoryId);
+    const location = findLocation(db, input.locationId);
 
     const totalQuantity = parseNonNegativeInt(input.totalQuantity, "Total quantity");
     const availableQuantity = parseNonNegativeInt(input.availableQuantity, "Available quantity");
@@ -702,13 +764,18 @@ export async function updateItem(
     item.updatedAt = nowIso();
 
     addActivity(db, input.actorUserId, "item.update", "item", item.id, `Item ${item.name} diperbarui.`);
+
+    await runSorobanSync("item.update", async () => {
+      await syncItemUpdate(item, category, location);
+    });
+
     return item;
   });
 }
 
 export async function deleteItem(itemId: string, actorUserId: string): Promise<void> {
-  await withMutation((db) => {
-    findItem(db, itemId);
+  await withMutation(async (db) => {
+    const item = findItem(db, itemId);
 
     const hasActiveBorrow = db.borrowRequests.some(
       (entry) => entry.itemId === itemId && (entry.status === "menunggu" || entry.status === "disetujui"),
@@ -717,6 +784,10 @@ export async function deleteItem(itemId: string, actorUserId: string): Promise<v
     if (hasActiveBorrow) {
       throw new Error("Item punya pengajuan aktif dan tidak bisa dihapus.");
     }
+
+    await runSorobanSync("item.delete", async () => {
+      await syncItemDelete(item.id);
+    });
 
     db.items = db.items.filter((entry) => entry.id !== itemId);
     addActivity(db, actorUserId, "item.delete", "item", itemId, "Item inventaris dihapus.");
@@ -759,7 +830,7 @@ export async function createBorrowRequest(input: {
   expectedReturnDate: string;
   userNote: string;
 }): Promise<BorrowRequest> {
-  return withMutation((db) => {
+  return withMutation(async (db) => {
     const item = findItem(db, input.itemId);
     findUser(db, input.userId);
 
@@ -821,6 +892,10 @@ export async function createBorrowRequest(input: {
       `Pengajuan peminjaman dibuat untuk item ${item.name}.`,
     );
 
+    await runSorobanSync("borrow.create", async () => {
+      await syncBorrowCreate(borrowRequest, item.id);
+    });
+
     return borrowRequest;
   });
 }
@@ -833,7 +908,7 @@ export async function updateBorrowRequestStatus(
     adminNote: string;
   },
 ): Promise<BorrowRequest> {
-  return withMutation((db) => {
+  return withMutation(async (db) => {
     const request = findBorrow(db, requestId);
     const item = findItem(db, request.itemId);
 
@@ -898,6 +973,10 @@ export async function updateBorrowRequestStatus(
       `Status peminjaman diubah ke ${nextStatus}.`,
     );
 
+    await runSorobanSync("borrow.update-status", async () => {
+      await syncBorrowStatusUpdate(request, input.actorUserId);
+    });
+
     return request;
   });
 }
@@ -935,7 +1014,7 @@ export async function createDamageReport(input: {
   issueType: string;
   description: string;
 }): Promise<DamageReport> {
-  return withMutation((db) => {
+  return withMutation(async (db) => {
     const item = findItem(db, input.itemId);
     findUser(db, input.userId);
 
@@ -975,6 +1054,10 @@ export async function createDamageReport(input: {
       `Laporan kerusakan dibuat untuk item ${item.name}.`,
     );
 
+    await runSorobanSync("damage.create", async () => {
+      await syncDamageCreate(report, item.id);
+    });
+
     return report;
   });
 }
@@ -989,7 +1072,7 @@ export async function updateDamageReportStatus(
     itemStatus?: ItemStatus;
   },
 ): Promise<DamageReport> {
-  return withMutation((db) => {
+  return withMutation(async (db) => {
     const report = findDamage(db, reportId);
     const item = findItem(db, report.itemId);
 
@@ -1019,6 +1102,10 @@ export async function updateDamageReportStatus(
       report.id,
       `Status laporan kerusakan diubah ke ${input.status}.`,
     );
+
+    await runSorobanSync("damage.update-status", async () => {
+      await syncDamageStatusUpdate(report, input.actorUserId, item.condition, item.status);
+    });
 
     return report;
   });
