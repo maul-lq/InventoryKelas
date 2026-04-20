@@ -65,7 +65,7 @@ We envision Inventra PNJ as a platform that makes classroom asset management mor
 
 ## Contract Details
 
-- Contract Address: CAGT4WK5ORNRPGUE6GXJMS7OJFMGGQLUJBO3E7XBYRJCYEBSDZ24XLWY
+- Contract Address: CDYRTWQDZG5Q5KNL67TDDPWMAWYG7IZMW2HNDP3T4OVOB5LEDEIIKDDG
   ![alt text](screenshot.png)
 
 ## Future Scope

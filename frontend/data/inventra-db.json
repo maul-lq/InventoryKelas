@@ -1,0 +1,221 @@
+{
+  "meta": {
+    "createdAt": "2026-04-20T05:06:39.044Z",
+    "updatedAt": "2026-04-20T05:14:34.898Z"
+  },
+  "users": [
+    {
+      "id": "user_admin_seed",
+      "name": "Admin Inventra",
+      "email": "admin@pnj.ac.id",
+      "password": "admin123",
+      "role": "admin",
+      "createdAt": "2026-04-20T05:06:39.044Z",
+      "updatedAt": "2026-04-20T05:06:39.044Z"
+    },
+    {
+      "id": "user_mahasiswa_seed",
+      "name": "Mahasiswa PNJ",
+      "email": "mhs@pnj.ac.id",
+      "password": "mhs123",
+      "role": "mahasiswa",
+      "createdAt": "2026-04-20T05:06:39.044Z",
+      "updatedAt": "2026-04-20T05:06:39.044Z"
+    }
+  ],
+  "sessions": [
+    {
+      "token": "session_737685eb-2c01-4c60-95b5-dead71547b6c",
+      "userId": "user_admin_seed",
+      "createdAt": "2026-04-20T05:06:39.077Z",
+      "expiresAt": "2026-04-27T05:06:39.077Z"
+    },
+    {
+      "token": "session_abd1d454-cb84-44a6-9a06-36c24625c644",
+      "userId": "user_admin_seed",
+      "createdAt": "2026-04-20T05:11:06.238Z",
+      "expiresAt": "2026-04-27T05:11:06.238Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat_lab",
+      "name": "Peralatan Lab",
+      "description": "Peralatan elektronik dan praktikum",
+      "createdAt": "2026-04-20T05:06:39.044Z",
+      "updatedAt": "2026-04-20T05:06:39.044Z"
+    },
+    {
+      "id": "cat_furniture",
+      "name": "Furniture",
+      "description": "Meja, kursi, lemari, dan aset ruangan",
+      "createdAt": "2026-04-20T05:06:39.044Z",
+      "updatedAt": "2026-04-20T05:06:39.044Z"
+    },
+    {
+      "id": "cat_consumable",
+      "name": "Barang Habis Pakai",
+      "description": "Barang konsumsi operasional kelas",
+      "createdAt": "2026-04-20T05:06:39.044Z",
+      "updatedAt": "2026-04-20T05:06:39.044Z"
+    },
+    {
+      "id": "cat_ad3e04c7-dadb-4897-8a5a-319f34f89f13",
+      "name": "Aplikasi Online",
+      "description": "Aplikasi online yang pro",
+      "createdAt": "2026-04-20T05:07:41.352Z",
+      "updatedAt": "2026-04-20T05:07:41.352Z"
+    },
+    {
+      "id": "cat_df522205-d38f-4761-9236-19237e3dbe00",
+      "name": "Kategori MCP 1776661888253",
+      "description": "",
+      "createdAt": "2026-04-20T05:11:28.303Z",
+      "updatedAt": "2026-04-20T05:11:28.303Z"
+    },
+    {
+      "id": "cat_298c7ae7-bb55-47f0-9ed4-32bafd35983f",
+      "name": "Kategori ENV 1776662011218",
+      "description": "",
+      "createdAt": "2026-04-20T05:13:31.277Z",
+      "updatedAt": "2026-04-20T05:13:31.277Z"
+    },
+    {
+      "id": "cat_a6ac02cf-3860-4126-898b-213ca69cc276",
+      "name": "Kategori ENV RETEST 1776662073850",
+      "description": "",
+      "createdAt": "2026-04-20T05:14:33.900Z",
+      "updatedAt": "2026-04-20T05:14:33.900Z"
+    }
+  ],
+  "locations": [
+    {
+      "id": "loc_a101",
+      "name": "Ruang A101",
+      "description": "Kelas teori lantai 1",
+      "createdAt": "2026-04-20T05:06:39.044Z",
+      "updatedAt": "2026-04-20T05:06:39.044Z"
+    },
+    {
+      "id": "loc_lab_komputer",
+      "name": "Lab Komputer",
+      "description": "Laboratorium praktikum TI",
+      "createdAt": "2026-04-20T05:06:39.044Z",
+      "updatedAt": "2026-04-20T05:06:39.044Z"
+    }
+  ],
+  "items": [
+    {
+      "id": "item_projector_a101",
+      "itemCode": "PNJ-INV-001",
+      "name": "Proyektor Epson",
+      "categoryId": "cat_lab",
+      "locationId": "loc_a101",
+      "totalQuantity": 2,
+      "availableQuantity": 2,
+      "unit": "unit",
+      "condition": "baik",
+      "status": "tersedia",
+      "description": "Proyektor utama untuk presentasi kelas",
+      "createdAt": "2026-04-20T05:06:39.044Z",
+      "updatedAt": "2026-04-20T05:06:39.044Z"
+    },
+    {
+      "id": "item_kursi_lab",
+      "itemCode": "PNJ-INV-002",
+      "name": "Kursi Lab",
+      "categoryId": "cat_furniture",
+      "locationId": "loc_lab_komputer",
+      "totalQuantity": 40,
+      "availableQuantity": 40,
+      "unit": "buah",
+      "condition": "baik",
+      "status": "tersedia",
+      "description": "Kursi untuk mahasiswa di ruang lab",
+      "createdAt": "2026-04-20T05:06:39.044Z",
+      "updatedAt": "2026-04-20T05:06:39.044Z"
+    },
+    {
+      "id": "item_spidol",
+      "itemCode": "PNJ-INV-003",
+      "name": "Spidol Whiteboard",
+      "categoryId": "cat_consumable",
+      "locationId": "loc_a101",
+      "totalQuantity": 20,
+      "availableQuantity": 20,
+      "unit": "buah",
+      "condition": "baik",
+      "status": "tersedia",
+      "description": "Spidol cadangan untuk papan tulis",
+      "createdAt": "2026-04-20T05:06:39.044Z",
+      "updatedAt": "2026-04-20T05:06:39.044Z"
+    }
+  ],
+  "borrowRequests": [],
+  "damageReports": [],
+  "activityLogs": [
+    {
+      "id": "activity_b595a978-a223-4752-b776-81e0a5df5a00",
+      "actorUserId": "user_admin_seed",
+      "event": "category.create",
+      "entityType": "category",
+      "entityId": "cat_a6ac02cf-3860-4126-898b-213ca69cc276",
+      "message": "Kategori Kategori ENV RETEST 1776662073850 dibuat.",
+      "createdAt": "2026-04-20T05:14:33.900Z"
+    },
+    {
+      "id": "activity_b4274c6c-768b-4cf6-9d51-12a94a55ce27",
+      "actorUserId": "user_admin_seed",
+      "event": "category.create",
+      "entityType": "category",
+      "entityId": "cat_298c7ae7-bb55-47f0-9ed4-32bafd35983f",
+      "message": "Kategori Kategori ENV 1776662011218 dibuat.",
+      "createdAt": "2026-04-20T05:13:31.277Z"
+    },
+    {
+      "id": "activity_7d61ce20-9a9a-472b-8855-710ba2c87a26",
+      "actorUserId": "user_admin_seed",
+      "event": "category.create",
+      "entityType": "category",
+      "entityId": "cat_df522205-d38f-4761-9236-19237e3dbe00",
+      "message": "Kategori Kategori MCP 1776661888253 dibuat.",
+      "createdAt": "2026-04-20T05:11:28.303Z"
+    },
+    {
+      "id": "activity_e9a919ca-4397-4ae3-bc78-5d785e8c6a22",
+      "actorUserId": "user_admin_seed",
+      "event": "auth.login",
+      "entityType": "auth",
+      "entityId": "session_abd1d454-cb84-44a6-9a06-36c24625c644",
+      "message": "User login berhasil.",
+      "createdAt": "2026-04-20T05:11:06.238Z"
+    },
+    {
+      "id": "activity_084e6394-a456-4335-a8c6-a25b80a02457",
+      "actorUserId": "user_admin_seed",
+      "event": "category.create",
+      "entityType": "category",
+      "entityId": "cat_ad3e04c7-dadb-4897-8a5a-319f34f89f13",
+      "message": "Kategori Aplikasi Online dibuat.",
+      "createdAt": "2026-04-20T05:07:41.352Z"
+    },
+    {
+      "id": "activity_ed62a11e-3c63-45f5-a559-043faf42fdf9",
+      "actorUserId": "user_admin_seed",
+      "event": "auth.login",
+      "entityType": "auth",
+      "entityId": "session_737685eb-2c01-4c60-95b5-dead71547b6c",
+      "message": "User login berhasil.",
+      "createdAt": "2026-04-20T05:06:39.078Z"
+    },
+    {
+      "id": "activity_c57fa507-d515-4a91-99bd-da46f542e95a",
+      "actorUserId": null,
+      "event": "seed.created",
+      "entityType": "auth",
+      "entityId": "system",
+      "message": "Database seed Inventra PNJ dibuat.",
+      "createdAt": "2026-04-20T05:06:39.044Z"
+    }
+  ]
+}

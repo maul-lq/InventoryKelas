@@ -82,7 +82,7 @@ async function writeSyncMap(syncMap: SorobanSyncMap): Promise<void> {
 
 async function withSyncMap<T>(mutator: (syncMap: SorobanSyncMap) => Promise<T> | T): Promise<T> {
   const previous = syncLock;
-  let release: (() => void) | null = null;
+  let release: () => void = () => undefined;
   syncLock = new Promise<void>((resolve) => {
     release = resolve;
   });
@@ -94,9 +94,7 @@ async function withSyncMap<T>(mutator: (syncMap: SorobanSyncMap) => Promise<T> |
     await writeSyncMap(syncMap);
     return result;
   } finally {
-    if (release) {
-      release();
-    }
+    release();
   }
 }
 
@@ -149,6 +147,14 @@ function damageStatusToContract(status: DamageStatus): string {
   return map[status];
 }
 
+function toCliArgValue(value: string | number): string {
+  if (typeof value === "string" && value.length === 0) {
+    // Stellar CLI rejects truly empty values for named args, use single space as explicit empty text.
+    return " ";
+  }
+  return String(value);
+}
+
 async function invokeContract(
   functionName: string,
   args: Record<string, string | number>,
@@ -182,7 +188,7 @@ async function invokeContract(
   cliArgs.push("--quiet", "--", functionName);
 
   for (const [key, value] of Object.entries(args)) {
-    cliArgs.push(`--${key}`, String(value));
+    cliArgs.push(`--${key}`, toCliArgValue(value));
   }
 
   const { stdout, stderr } = await execFileAsync("stellar", cliArgs, {
